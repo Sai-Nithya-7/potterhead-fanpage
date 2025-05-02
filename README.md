@@ -1,7 +1,7 @@
 # Harry Potter Fanpage
 
 Welcome to the Harry Potter Fanpage! This website is dedicated to all things magical from the wizarding world of Harry Potter.
-**Check out the Live Website:** [https://the-harry-potter-fanpage.vercel.app](https://the-harry-potter-fanpage.vercel.app)
+**Check out the Live Website:** [https://potterheads-two.vercel.app](https://potterheads-two.vercel.app/)
 
 ## Features
 
