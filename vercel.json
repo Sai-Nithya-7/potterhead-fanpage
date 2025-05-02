@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/", "dest": "/index.html" },
+    { "src": "/about", "dest": "/about.html" },
+    { "src": "/characters", "dest": "/characters.html" },
+    { "src": "/gallery", "dest": "/gallery.html" },
+    { "src": "/login", "dest": "/login.html" },
+    { "src": "/sorting_hat", "dest": "/sorting_hat.html" },
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
+}
