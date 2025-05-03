@@ -1,542 +1,1030 @@
-/* General styles */
-body {
-    font-family: 'Playfair Display', serif;
-    background-color: #001a33; /* Dark blue */
-    color: #e0e0e0;
+/* ===== Dark Academia Gold Theme ===== */
+:root {
+    /* Color Palette */
+    --midnight-blue: #0a1220;
+    --navy-blue: #1a2a4a;
+    --dusty-blue: #3a506b;
+    --antique-gold: #c0a062;
+    --pale-gold: #e4d6a7;
+    --ivory: #f0ebd8;
+    --ink: #0d1b2a;
+    --vintage-paper: #e8e1cf;
+    --glow: rgba(192, 160, 98, 0.15);
+    --gutter: #2c3e50;
+  }
+  
+  /* ===== Base Styles ===== */
+  body {
+    font-family: 'Cormorant Garamond', 'Playfair Display', serif;
+    background-color: var(--midnight-blue);
+    color: var(--ivory);
+    background-image: 
+      url('https://ik.imagekit.io/your_account/pics/old-paper-texture.jpg'),
+      linear-gradient(to bottom, var(--midnight-blue), var(--navy-blue));
+    background-blend-mode: multiply;
+    letter-spacing: 0.3px;
     margin: 0;
     padding: 0;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-}
-
-body::before {
+  }
+  
+  /* ===== Scrollbar ===== */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--ink);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--antique-gold);
+    border-radius: 5px;
+  }
+  
+  /* ===== Header ===== */
+  header {
+    background: linear-gradient(135deg, var(--navy-blue) 0%, var(--midnight-blue) 100%);
+    color: var(--pale-gold);
+    padding: 2rem 1rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    border-bottom: 3px solid var(--antique-gold);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  }
+  
+  header::before {
     content: "";
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: -1;
-}
-
-/* Header styles */
-header {
-    background-color: #031423b7; /* Darker blue */
-    color: #e0e0e0;
-    padding: 30px 20px;
-    text-align: center;
-    /*border-bottom: 5px solid ;  Dark green */
-    margin-bottom: 10px;
-}
-
-header h1 {
-    font-size: 2.5em;
+    background: url('https://ik.imagekit.io/your_account/pics/ink-splatter.png');
+    opacity: 0.03;
+    pointer-events: none;
+  }
+  
+  header h1 {
+    font-size: 3rem;
     margin: 0;
-}
-
-/* Navigation styles */
-nav {
-    background-color: #032603; /* Dark green */
-    padding: 5px 0;
-}
-
-nav ul {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    letter-spacing: 2px;
+    font-weight: 700;
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* ===== Navigation ===== */
+  nav {
+    background: var(--ink);
+    padding: 0.5rem 0;
+    border-top: 1px solid var(--antique-gold);
+    border-bottom: 1px solid var(--antique-gold);
+  }
+  
+  nav ul {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     padding: 0;
-    margin: 5px 0;
-}
-
-nav ul li {
-    list-style-type: none;
-    margin-right: 20px;
-}
-
-nav ul li a {
-    color: #e0e0e0;
-    font-size: 1.3em;
-    padding: 10px;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-nav ul li a:hover {
-    color: #025602; 
-}
-
-#main-nav ul {
-    list-style-type: none;
-    display: flex;
-    justify-content: center;
-    /*background-color: rgba(0, 26, 51, 0.7);*/
-    padding: 15px;
     margin: 0;
-}
-
-#main-nav ul li {
-    margin: 0 15px;
-}
-
-#main-nav ul li a {
-    color: #66ff66;
+  }
+  
+  nav ul li {
+    list-style-type: none;
+    margin: 0 1rem;
+    position: relative;
+  }
+  
+  nav ul li a {
+    color: var(--pale-gold);
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
     text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-
-#main-nav ul li a:hover {
-    color: #ffffff;
-}
-
-/* Main content styles */
-main {
-    padding: 40px;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: 4px;
+  }
+  
+  nav ul li a:hover {
+    color: var(--ivory);
+    background-color: rgba(192, 160, 98, 0.1);
+    transform: translateY(-2px);
+    text-shadow: 0 0 8px var(--glow);
+  }
+  
+  nav ul li a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background: var(--antique-gold);
+    transition: all 0.3s ease;
+  }
+  
+  nav ul li a:hover::after {
+    width: 80%;
+    left: 10%;
+  }
+  
+  /* ===== Main Content ===== */
+  main {
+    padding: 2rem;
     max-width: 1200px;
-    margin: auto;
-}
-
-/* Character card styles */
-.character-card {
-    background-color: rgba(0, 26, 51, 0.7);
+    margin: 0 auto;
+    width: 90%;
+    background-color: rgba(26, 42, 74, 0.7);
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--antique-gold);
+    position: relative;
+    margin-bottom: 2rem;
+    backdrop-filter: blur(4px);
+  }
+  
+  main::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border: 1px solid rgba(192, 160, 98, 0.3);
+    border-radius: 4px;
+    pointer-events: none;
+  }
+  
+  /* ===== Character Cards ===== */
+  .character-card {
+    background: linear-gradient(145deg, rgba(26, 42, 74, 0.9), rgba(58, 80, 107, 0.7));
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
-}
-
-.character-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
-}
-
-.character-card img {
+    border: 1px solid var(--antique-gold);
+    position: relative;
+  }
+  
+  .character-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://ik.imagekit.io/your_account/pics/parchment-texture.jpg') center/cover;
+    opacity: 0.1;
+    z-index: 0;
+  }
+  
+  .character-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), 0 0 15px var(--glow);
+  }
+  
+  .character-card img {
     width: 100%;
     height: 250px;
     object-fit: cover;
-}
-
-.character-card h2 {
-    font-size: 1.2em;
-    padding: 15px 15px 5px;
-    margin: 0;
-    color: #66ff66;
-}
-
-.character-card p {
-    font-size: 0.9em;
-    padding: 0 15px 15px;
-    margin: 0;
+    border-bottom: 3px solid var(--antique-gold);
+  }
+  
+  .character-card-content {
+    padding: 1.5rem;
+    position: relative;
+    z-index: 1;
     flex-grow: 1;
-}
-
-/* Gallery styles */
-.gallery-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .character-card h2 {
+    font-size: 1.5rem;
+    margin: 0 0 1rem 0;
+    color: var(--pale-gold);
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  }
+  
+  .character-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0 0 1rem 0;
+    color: var(--vintage-paper);
+    flex-grow: 1;
+  }
+  
+  .character-card .house-badge {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: -20px;
+    right: 20px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 2;
+  }
+  
+  /* ===== Gallery ===== */
+  .gallery-container {
     max-width: 100%;
     overflow-x: hidden;
-    padding: 20px 0;
-    background-color: rgba(10, 12, 87, 0.7);
-}
-
-.gallery {
+    padding: 2rem 0;
+    background: linear-gradient(to right, rgba(26, 42, 74, 0.9), rgba(58, 80, 107, 0.9));
+    border-top: 1px solid var(--antique-gold);
+    border-bottom: 1px solid var(--antique-gold);
+    margin: 2rem 0;
+    position: relative;
+  }
+  
+  .gallery-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://ik.imagekit.io/your_account/pics/magic-sparkles.png') center/cover;
+    opacity: 0.1;
+    pointer-events: none;
+  }
+  
+  .gallery {
     display: flex;
     overflow-x: auto;
-    gap: 15px;
-    padding: 20px;
+    gap: 1.5rem;
+    padding: 1.5rem;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
-}
-
-.gallery::-webkit-scrollbar {
-    height: 8px;
-}
-
-.gallery::-webkit-scrollbar-track {
-    background: #04234d;
-}
-
-.gallery::-webkit-scrollbar-thumb {
-    background: #0fb60f;
-    border-radius: 4px;
-}
-
-.gallery::-webkit-scrollbar-thumb:hover {
-    background: #013301;
-}
-
-.gallery img {
+  }
+  
+  .gallery::-webkit-scrollbar-track {
+    background: var(--navy-blue);
+  }
+  
+  .gallery::-webkit-scrollbar-thumb {
+    background: var(--antique-gold);
+  }
+  
+  .gallery img {
     flex: 0 0 auto;
-    width: 250px;
-    height: 200px;
+    width: 280px;
+    height: 220px;
     object-fit: cover;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
     scroll-snap-align: start;
-    border-color: #004d00;
-}
-
-.gallery img:hover {
+    border: 2px solid var(--antique-gold);
+    border-radius: 5px;
+    filter: sepia(0.3) brightness(0.9);
+  }
+  
+  .gallery img:hover {
     transform: scale(1.05);
-}
-
-/* Footer styles */
-footer {
-    background-color: #001a33;
-    color: #e0e0e0;
+    box-shadow: 0 8px 25px rgba(192, 160, 98, 0.4);
+    filter: sepia(0) brightness(1);
+    z-index: 10;
+  }
+  
+  /* ===== Footer ===== */
+  footer {
+    background: linear-gradient(to right, var(--midnight-blue), var(--ink));
+    color: var(--pale-gold);
     text-align: center;
-    padding: 20px;
+    padding: 2rem;
     margin-top: auto;
-    border-top: 3px solid #3b3b3b;
-}
-
-/* User display styles */
-.user-display {
+    border-top: 1px solid var(--antique-gold);
+    position: relative;
+  }
+  
+  footer p {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+  }
+  
+  /* ===== User Display ===== */
+  .user-display {
     position: absolute;
     top: 20px;
     right: 20px;
     display: flex;
     align-items: center;
     gap: 10px;
-}
-
-#user-name {
+    background-color: rgba(26, 42, 74, 0.8);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    border: 1px solid var(--antique-gold);
+  }
+  
+  #user-name {
     font-weight: bold;
-}
-
-#logout-button {
-    padding: 5px 10px;
-    background-color: #f44336;
-    color: white;
-    border: none;
-    border-radius: 3px;
+    color: var(--pale-gold);
+  }
+  
+  #logout-button {
+    padding: 0.5rem 1rem;
+    background-color: var(--navy-blue);
+    color: var(--pale-gold);
+    border: 1px solid var(--antique-gold);
+    border-radius: 20px;
     cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-#logout-button:hover {
-    background-color: #d32f2f;
-}
-
-/* About page styles */
-.about-section {
+    transition: all 0.3s ease;
+    font-weight: 600;
+  }
+  
+  #logout-button:hover {
+    background-color: var(--dusty-blue);
+    transform: translateY(-2px);
+  }
+  
+  /* ===== About Page ===== */
+  .about-section {
     max-width: 800px;
     margin: 0 auto;
-    padding: 20px;
-}
-
-.about-section p {
-    font-size: 1.2em;
-    line-height: 1.6;
-    color: #e0e0e0;
-}
-
-/* Characters page styles */
-.characters-container {
+    padding: 2rem;
+    background-color: rgba(26, 42, 74, 0.7);
+    border-radius: 8px;
+    border: 1px solid var(--antique-gold);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  }
+  
+  .about-section h2 {
+    color: var(--pale-gold);
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+  
+  .about-section h2::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 2px;
+    background: var(--antique-gold);
+  }
+  
+  .about-section p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--vintage-paper);
+    margin-bottom: 1.5rem;
+    text-align: justify;
+  }
+  
+  /* ===== Characters Page ===== */
+  .characters-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    padding: 40px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* Home page styles */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+  }
+  
+  /* ===== Home Page Styles ===== */
 .home-page {
-    background-image: url('https://ik.imagekit.io/hpapi/hogwarts.jpg');
+    background-image: 
+      url('https://ik.imagekit.io/your_account/pics/hogwarts-castle.jpg'),
+      linear-gradient(to bottom, rgba(10, 16, 40, 0.9), rgba(26, 42, 74, 0.9));
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-}
-
-.home-page::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 26, 51, 0.7);
-}
-
-.home-page main {
-    background-color: rgba(0, 26, 51, 0.7);
-    padding: 40px;
-    border-radius: 10px;
-    max-width: 800px;
-    margin: 40px auto;
-}
-
-.home-page h2 {
-    color: #66ff66;
-}
-
-.home-page p {
-    font-size: 1.1em;
-    line-height: 1.6;
-    margin-bottom: 20px;
-}
-
-/* Login and signup styles 
-.login-container {
-    width: 300px;
-    margin: 100px auto;
-    padding: 20px;
-    background-color: #0b6617;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.login-container h1,
-.login-container h2 {
+    background-blend-mode: multiply;
+  }
+  
+  .home-page header {
+    background: linear-gradient(135deg, rgba(26, 42, 74, 0.9), rgba(10, 16, 40, 0.9));
+    border-bottom: 3px solid var(--antique-gold);
+    padding: 3rem 1rem;
+  }
+  
+  .home-page header h1 {
+    font-size: 3.5rem;
+    color: var(--pale-gold);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    margin-bottom: 1rem;
+  }
+  
+  .home-page main {
     text-align: center;
-    color: #e6e1e1;
-}
-
-.login-container form {
-    display: flex;
-    flex-direction: column;
-}
-
-.login-container input {
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-.login-container button {
-    padding: 10px;
-    background-color: #0b1658;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.login-container button:hover {
-    background-color: #3f51b5;
-}
-*/
-
-/*New Login styles*/
-body {
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
+    padding: 4rem 2rem;
+    background-color: rgba(26, 42, 74, 0.7);
+    border: 2px solid var(--antique-gold);
+    max-width: 800px;
+    margin: 3rem auto;
+    border-radius: 12px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+  }
+  
+  .home-page h2 {
+    color: var(--pale-gold);
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+  
+  .home-page h2::after {
+    content: "";
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 2px;
+    background: var(--antique-gold);
+  }
+  
+  .home-page p {
+    color: var(--vintage-paper);
+    font-size: 1.3rem;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+  }
+  
+  /* ===== Login Button Styles ===== */
+  .lgn-container {
     display: flex;
     justify-content: center;
+    margin-top: 2rem;
+  }
+  
+  .login-button {
+    background: linear-gradient(135deg, var(--navy-blue), var(--dusty-blue));
+    color: var(--pale-gold);
+    border: 2px solid var(--antique-gold);
+    padding: 1.2rem 3rem;
+    font-size: 1.3rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
     align-items: center;
-    background-color: #001019;
-    font-family: Arial, sans-serif;
-}
-
-.auth-container {
-    flex-wrap: wrap;
-    width: 100%;
-    max-width: 400px;
+    gap: 0.8rem;
+  }
+  
+  .login-button:hover {
+    background: linear-gradient(135deg, var(--dusty-blue), var(--navy-blue));
+    color: var(--ivory);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(192, 160, 98, 0.4);
+  }
+  
+  .login-button:active {
+    transform: translateY(-1px);
+  }
+  
+  /* ===== Footer Styles ===== */
+  .home-page footer {
+    background: linear-gradient(to right, var(--midnight-blue), var(--ink));
+    color: var(--pale-gold);
     padding: 2rem;
+    border-top: 1px solid var(--antique-gold);
+    text-align: center;
+  }
+  
+  /* ===== Navigation Bar Styles ===== */
+#main-nav {
+    background: linear-gradient(to right, 
+        rgba(10, 16, 40, 0.9), 
+        rgba(26, 42, 74, 0.9));
+    padding: 0.5rem 1rem;
+    border-top: 1px solid var(--antique-gold);
+    border-bottom: 1px solid var(--antique-gold);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
-#login-form,
-#signup-form {
+#main-nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    flex-wrap: wrap;
+}
+
+#main-nav li {
+    position: relative;
+}
+
+#main-nav a {
+    color: var(--pale-gold);
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+}
+
+#main-nav a:hover {
+    background-color: rgba(192, 160, 98, 0.2);
+    color: var(--ivory);
+    transform: translateY(-2px);
+}
+
+#main-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--antique-gold);
+    transition: all 0.3s ease;
+}
+
+#main-nav a:hover::after {
     width: 100%;
+    left: 0;
 }
 
-h1 {
-    color: white;
-    margin-bottom: 2rem;
-    font-size: 2rem;
+/* Responsive Nav */
+@media (max-width: 768px) {
+    #main-nav ul {
+        gap: 0.5rem;
+    }
+    
+    #main-nav a {
+        padding: 0.5rem;
+        font-size: 1rem;
+    }
 }
 
-form {
+@media (max-width: 480px) {
+    #main-nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+    }
+    
+    #main-nav li {
+        width: 100%;
+        text-align: center;
+    }
+    
+    #main-nav a {
+        justify-content: center;
+        padding: 0.75rem;
+    }
+}
+  
+  /* ===== Responsive Styles ===== */
+  @media (max-width: 768px) {
+    .home-page header h1 {
+      font-size: 2.5rem;
+    }
+    
+    .home-page h2 {
+      font-size: 2rem;
+    }
+    
+    .home-page p {
+      font-size: 1.1rem;
+    }
+    
+    #main-nav ul {
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .login-button {
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .home-page header h1 {
+      font-size: 2rem;
+    }
+    
+    .home-page h2 {
+      font-size: 1.8rem;
+    }
+    
+    .home-page main {
+      padding: 2rem 1rem;
+    }
+  }
+  
+  /* Additional styles specific to login page */
+  body {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    min-height: 100vh;
+    background-image: 
+        url('https://ik.imagekit.io/your_account/pics/hogwarts-library.jpg'),
+        linear-gradient(to bottom, var(--midnight-blue), var(--navy-blue));
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-blend-mode: multiply;
 }
 
-input {
-    padding: 0.75rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1rem;
-    width: 100%;
-    box-sizing: border-box;
-    background: white;
-    color: black;
-}
-
-input:focus {
-    outline: none;
-    border-color: #004d00;
-}
-
-.auth-button {
-    background-color: #004d00;
-    color: white;
-    border: none;
-    padding: 1rem;
-    border-radius: 4px;
-    font-size: 1.125rem;
-    cursor: pointer;
-    width: 100%;
-    margin-top: 0.5rem;
-    transition: background-color 0.2s;
-}
-
-.auth-button:hover {
-    background-color: #006600;
-}
-
-.toggle-text {
-    color: #e0e0e0;
-    text-align: center;
-    margin-top: 1rem;
-}
-
-.toggle-text a {
-    color: #6b46c1;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.toggle-text a:hover {
-    color: #805ad5;
-    text-decoration: underline;
-}
-
-/* Back to home button styles */
 .back-to-home {
     position: absolute;
     top: 20px;
     left: 20px;
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-    padding: 10px 15px;
-    border: 2px solid #333;
-    border-radius: 5px;
-    transition: all 0.3s ease;
 }
 
-.back-to-home:hover {
-    background-color: #333;
-    color: #fff;
-}
-
-/* Sorting Hat quiz styles */
-.sortinghat-card {
-    max-width: 600px;
-    margin: 40px auto;
-    padding: 30px;
-    background-color: #001a33;
-    border-radius: 5px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-    border: 2px solid #082a02;
-}
-.sortinghat-h2 {
-    align-self: auto;
-}
-#question-number {
-    text-align: center;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #e0e0e0;
-}
-
-.button-container {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-
-.sortinghat-button {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
+.home-button {
+    background: rgba(26, 42, 74, 0.7);
+    color: var(--pale-gold);
+    border: 1px solid var(--antique-gold);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
     cursor: pointer;
-    transition: background-color 0.3s;
-    font-weight: bold;
+    transition: all 0.3s ease;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
 }
 
-.sortinghat-button:hover {
-    background-color: #45a049;
+.home-button:hover {
+    background: var(--antique-gold);
+    color: var(--ink);
 }
 
-.sortinghat-button:disabled {
-    background-color: #cccccc;
-    cursor: not-allowed;
+footer {
+    margin-top: auto;
+    text-align: center;
+    padding: 1.5rem;
+    color: var(--pale-gold);
+    background-color: rgba(10, 16, 40, 0.7);
+    border-top: 1px solid var(--antique-gold);
 }
 
-.sortinghat-question {
-    font-size: 18px;
-    margin-bottom: 15px;
-    color: #e0e0e0;
-}
-
-.sortinghat-options {
+  /* ===== Auth Styles ===== */
+  .auth-container {
+    background-color: rgba(26, 42, 74, 0.9);
+    border-radius: 10px;
+    padding: 3rem;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+    border: 2px solid var(--antique-gold);
+    max-width: 450px;
+    width: 90%;
+    margin: 2rem auto;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .auth-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://ik.imagekit.io/your_account/pics/magic-sparkles.png') center/cover;
+    opacity: 0.1;
+    pointer-events: none;
+  }
+  
+  .auth-container h1 {
+    color: var(--pale-gold);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  .auth-form {
     display: flex;
     flex-direction: column;
-    margin: 20px 0;
-}
-
-.sortinghat-options label {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
+    gap: 1.5rem;
+  }
+  
+  .auth-input {
+    padding: 1rem;
+    border: 1px solid var(--antique-gold);
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: var(--ink);
+    transition: all 0.3s ease;
+  }
+  
+  .auth-input:focus {
+    outline: none;
+    border-color: var(--dusty-blue);
+    box-shadow: 0 0 10px rgba(192, 160, 98, 0.5);
+  }
+  
+  .auth-button {
+    background: linear-gradient(to right, var(--navy-blue), var(--dusty-blue));
+    color: var(--pale-gold);
+    border: 1px solid var(--antique-gold);
+    padding: 1rem;
+    border-radius: 5px;
+    font-size: 1.2rem;
     cursor: pointer;
-    font-size: 1.1em;
-    color: #e0e0e0;
-}
-
-.sortinghat-options input[type="radio"] {
-    margin-right: 12px;
-    width: 20px;
-    height: 20px;
-    accent-color: #024602;
-}
-
-/* Responsive styles */
-@media (max-width: 768px) {
-    .characters-container {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        padding: 20px;
-    }
-
-    .character-card img {
-        height: 200px;
-    }
-
-    .gallery img {
-        width: 200px;
-        height: 150px;
-    }
-}
-
-/* Utility classes */
-.lgn-container {
+    transition: all 0.3s ease;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-top: 1rem;
+  }
+  
+  .auth-button:hover {
+    background: linear-gradient(to right, var(--dusty-blue), var(--navy-blue));
+    color: var(--ivory);
+    box-shadow: 0 0 15px var(--glow);
+  }
+  
+  .toggle-text {
+    color: var(--vintage-paper);
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 1rem;
+  }
+  
+  .toggle-link {
+    color: var(--pale-gold);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  
+  .toggle-link:hover {
+    color: var(--ivory);
+    text-decoration: underline;
+  }
+  
+  /* ===== Sorting Hat Quiz ===== */
+  .sortinghat-card {
+    max-width: 700px;
+    margin: 3rem auto;
+    padding: 3rem;
+    background: linear-gradient(145deg, rgba(26, 42, 74, 0.9), rgba(58, 80, 107, 0.8));
+    border-radius: 10px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+    border: 2px solid var(--antique-gold);
+    position: relative;
+  }
+  
+  .sortinghat-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://ik.imagekit.io/your_account/pics/sorting-hat-bg.png') center/cover;
+    opacity: 0.1;
+    pointer-events: none;
+  }
+  
+  .sortinghat-h2 {
+    color: var(--pale-gold);
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+  
+  .sortinghat-h2::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 2px;
+    background: var(--antique-gold);
+  }
+  
+  #question-number {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: var(--pale-gold);
+    font-size: 1.2rem;
+  }
+  
+  .sortinghat-question {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    color: var(--vintage-paper);
+    text-align: center;
+    line-height: 1.6;
+  }
+  
+  .sortinghat-options {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    margin: 2rem 0;
+    gap: 1rem;
+  }
+  
+  .sortinghat-option {
+    display: flex;
     align-items: center;
-    height: 45vh;
-}
-
-.login-button,
-button {
-    background-color: #004d00;
-    color: #e0e0e0;
-    padding: 15px 30px;
-    font-size: 18px;
-    border: none;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.1);
     border-radius: 5px;
     cursor: pointer;
-}
-
-.login-button:hover,
-button:hover {
-    background-color: #006600;
-}
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+  }
+  
+  .sortinghat-option:hover {
+    background-color: rgba(192, 160, 98, 0.2);
+    border-left: 4px solid var(--antique-gold);
+  }
+  
+  .sortinghat-option input[type="radio"] {
+    margin-right: 1rem;
+    width: 20px;
+    height: 20px;
+    accent-color: var(--antique-gold);
+  }
+  
+  .sortinghat-option label {
+    font-size: 1.1rem;
+    color: var(--vintage-paper);
+    cursor: pointer;
+    flex-grow: 1;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+  }
+  
+  .sortinghat-button {
+    padding: 0.8rem 1.5rem;
+    background: linear-gradient(to right, var(--navy-blue), var(--dusty-blue));
+    color: var(--pale-gold);
+    border: 1px solid var(--antique-gold);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  
+  .sortinghat-button:hover {
+    background: linear-gradient(to right, var(--dusty-blue), var(--navy-blue));
+    color: var(--ivory);
+    box-shadow: 0 0 15px var(--glow);
+  }
+  
+  .sortinghat-button:disabled {
+    background: var(--gutter);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+  
+  /* ===== Result Display ===== */
+  .sortinghat-result {
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  .sortinghat-result h3 {
+    font-size: 2rem;
+    color: var(--pale-gold);
+    margin-bottom: 1.5rem;
+  }
+  
+  .house-crest {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 1.5rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  .house-description {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--vintage-paper);
+    margin-bottom: 2rem;
+  }
+  
+  /* ===== Animations ===== */
+  @keyframes floating {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+  }
+  
+  @keyframes glow {
+    0% { box-shadow: 0 0 10px rgba(192, 160, 98, 0.5); }
+    50% { box-shadow: 0 0 20px rgba(192, 160, 98, 0.8); }
+    100% { box-shadow: 0 0 10px rgba(192, 160, 98, 0.5); }
+  }
+  
+  .floating {
+    animation: floating 3s ease-in-out infinite;
+  }
+  
+  .glow {
+    animation: glow 2s ease-in-out infinite;
+  }
+  
+  /* ===== Responsive Styles ===== */
+  @media (max-width: 768px) {
+    header h1 {
+      font-size: 2rem;
+    }
+    
+    nav ul li {
+      margin: 0 0.5rem;
+    }
+    
+    nav ul li a {
+      font-size: 1rem;
+      padding: 0.5rem;
+    }
+    
+    .characters-container {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      padding: 1rem;
+      gap: 1rem;
+    }
+    
+    .character-card img {
+      height: 200px;
+    }
+    
+    .gallery img {
+      width: 220px;
+      height: 180px;
+    }
+    
+    .home-page main,
+    .about-section,
+    .sortinghat-card {
+      padding: 1.5rem;
+    }
+    
+    .auth-container {
+      padding: 2rem 1.5rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    header {
+      padding: 1.5rem 1rem;
+    }
+    
+    header h1 {
+      font-size: 1.8rem;
+    }
+    
+    nav ul {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    nav ul li {
+      margin: 0.3rem 0;
+    }
+    
+    .characters-container {
+      grid-template-columns: 1fr;
+    }
+    
+    .button-container {
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .sortinghat-button {
+      width: 100%;
+    }
+    
+    .user-display {
+      position: static;
+      justify-content: center;
+      margin: 1rem auto;
+      width: fit-content;
+    }
+  }
+  
+  /* ===== Font Import ===== */
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;500;700&display=swap');

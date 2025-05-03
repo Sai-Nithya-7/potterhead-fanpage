@@ -3,25 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harry Potter Fanpage - Home</title>
+    <title>Hogwarts Archives | Wizarding World</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body class="home-page">
     <header>
-        <h1>Welcome to the Harry Potter Fanpage</h1>
-        <nav id="main-nav"></nav>
+        <div class="header-content">
+            <h1><i class="fas fa-hat-wizard"></i> Hogwarts Archives</h1>
+            <p class="subtitle">The Complete Wizarding World Compendium</p>
+        </div>
+        <nav id="main-nav">
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="characters.html"><i class="fas fa-users"></i> Characters</a></li>
+                <li><a href="houses.html"><i class="fas fa-flag"></i> Houses</a></li>
+                <li><a href="sortinghat.html"><i class="fas fa-hat-wizard"></i> Sorting Hat</a></li>
+                <li><a href="about.html"><i class="fas fa-scroll"></i> About</a></li>
+            </ul>
+        </nav>
     </header>
+
     <main>
-        <h2>Discover the Magic of Harry Potter</h2>
-        <p>Explore the wizarding world, learn about your favorite characters, take the sorting hat quiz and immerse yourself in the enchanting universe of Harry Potter.</p>
-        <div class="lgn-container">
-            <button class="login-button" onclick="window.location.href='login.html'">Login</button>
-        </div>        
+        <section class="hero-section">
+            <h2><span class="gold-accent">Discover</span> the Magic</h2>
+            <p class="lead-text">Explore the enchanted world of Harry Potter through our collection of characters, spells, houses, and magical artifacts.</p>
+            
+            <div class="cta-container">
+                <div class="lgn-container">
+                    <button class="login-button" onclick="window.location.href='login.html'">
+                        <i class="fas fa-key"></i> Enter the Archives
+                    </button>
+                </div>
+                
+            </div>
+        </section>
     </main>
+
     <footer>
-        <p>&copy; 2025 Harry Potter Fanpage</p>
+        <div class="footer-content">
+            <p>&copy; 2025 Wizarding World Digital</p>
+            <p class="disclaimer">This is an unofficial fan site. We are not affiliated with J.K. Rowling or Warner Bros.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
     </footer>
+    
     <script src="navigation.js"></script>
-<script src="authentication.js"></script> 
+    <script src="authentication.js"></script>
 </body>
 </html>
