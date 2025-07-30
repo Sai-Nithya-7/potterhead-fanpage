@@ -31,7 +31,7 @@ To run this project locally, follow these steps:
    cd harry-potter-fanpage
    \`\`\`
 
-3. Open the \`index.html\` in your web browser to view the home page.
+3. Open the \`firstfile.html\` in your web browser to view the home page.
 (For better performance, you can use VS Code’s Live Server extension or run a local server.)
 
 ## Deployment
