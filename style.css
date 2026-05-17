@@ -43,6 +43,69 @@ body.login-page {
   background-blend-mode: multiply;
 }
 
+/* ===== Alert Modal ===== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(3px);
+}
+
+.modal-box {
+  background: linear-gradient(145deg, rgba(26, 42, 74, 0.98), rgba(58, 80, 107, 0.95));
+  border: 2px solid var(--antique-gold);
+  border-radius: 10px;
+  padding: 2rem 2.5rem;
+  max-width: 360px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.7);
+  animation: modalIn 0.2s ease;
+}
+
+.modal-box.error .modal-icon { color: #e05a5a; }
+.modal-box.success .modal-icon { color: #6abf7b; }
+
+.modal-icon {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.modal-message {
+  color: var(--vintage-paper);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.modal-ok {
+  background: linear-gradient(to right, var(--navy-blue), var(--dusty-blue));
+  color: var(--pale-gold);
+  border: 1px solid var(--antique-gold);
+  padding: 0.6rem 2rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.modal-ok:hover {
+  background: linear-gradient(to right, var(--dusty-blue), var(--navy-blue));
+  color: var(--ivory);
+  box-shadow: 0 0 12px var(--glow);
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
 /* ===== Scrollbar ===== */
 ::-webkit-scrollbar {
   width: 10px;

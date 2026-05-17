@@ -82,16 +82,25 @@ function updateUI() {
 }
 
 function showAlert(message, type = 'error') {
-    const alertBox = document.createElement('div');
-    alertBox.className = `alert ${type}`;
-    alertBox.textContent = message;
-    
-    const container = document.getElementById('alerts-container') || document.body;
-    container.prepend(alertBox);
-    
-    setTimeout(() => {
-        alertBox.remove();
-    }, 5000);
+  const icon = type === 'success' ? '✓' : '✕';
+
+  const overlay = document.createElement('div');
+  overlay.className = 'modal-overlay';
+  overlay.innerHTML = `
+    <div class="modal-box ${type}">
+      <div class="modal-icon">${icon}</div>
+      <p class="modal-message">${message}</p>
+      <button class="modal-ok">OK</button>
+    </div>
+  `;
+
+  document.body.appendChild(overlay);
+
+  const close = () => overlay.remove();
+  overlay.querySelector('.modal-ok').addEventListener('click', close);
+  overlay.addEventListener('click', function (e) {
+    if (e.target === overlay) close();
+  });
 }
 
 // Initialize
