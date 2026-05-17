@@ -165,38 +165,11 @@ header h1 {
   z-index: 100;
 }
 
-/* Hamburger — hidden on desktop */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-  width: 44px;
-  height: 44px;
-  background: none;
-  border: 1px solid var(--antique-gold);
-  border-radius: 6px;
-  cursor: pointer;
-  padding: 8px;
-  margin: 0.3rem 0;
+/* Desktop: single row, links centered, widget on the right */
+.nav-row {
+  display: none; /* hidden on desktop — widget lives in header there */
 }
 
-.hamburger span {
-  display: block;
-  width: 22px;
-  height: 2px;
-  background: var(--pale-gold);
-  border-radius: 2px;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  transform-origin: center;
-}
-
-.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-/* Nav list — desktop */
 #nav-links {
   display: flex;
   justify-content: center;
@@ -244,6 +217,192 @@ header h1 {
 #nav-links a:hover::after {
   width: 100%;
   left: 0;
+}
+
+/* Hamburger — hidden on desktop */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: 1px solid var(--antique-gold);
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 8px;
+  flex-shrink: 0;
+}
+
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--pale-gold);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform-origin: center;
+}
+
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ===== User Widget ===== */
+#user-widget {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 200;
+}
+
+.widget-login-btn {
+  color: var(--pale-gold);
+  border: 1px solid var(--antique-gold);
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  background: rgba(26, 42, 74, 0.8);
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.widget-login-btn:hover {
+  background: var(--antique-gold);
+  color: var(--ink);
+}
+
+.profile-pill {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(26, 42, 74, 0.9);
+  border: 1px solid var(--antique-gold);
+  border-radius: 20px;
+  padding: 0.4rem 1rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.profile-name {
+  color: var(--pale-gold);
+  font-size: 0.95rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.profile-house {
+  font-size: 0.75rem;
+  padding: 0.15rem 0.6rem;
+  border-radius: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.house-gryffindor { background: #740001; color: #ffd700; }
+.house-slytherin  { background: #1a472a; color: #aaaaaa; }
+.house-ravenclaw  { background: #0e1a40; color: #946b2d; }
+.house-hufflepuff { background: #ecb939; color: #372e29; }
+
+.profile-dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: rgba(13, 27, 42, 0.97);
+  border: 1px solid var(--antique-gold);
+  border-radius: 8px;
+  overflow: hidden;
+  min-width: 200px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+  flex-direction: column;
+  z-index: 300;
+}
+
+/* Desktop: hover to open */
+.profile-pill:hover .profile-dropdown {
+  display: flex;
+}
+
+/* Mobile: click to open via .active class */
+.profile-pill.active .profile-dropdown {
+  display: flex;
+}
+
+.profile-dropdown button {
+  background: none;
+  border: none;
+  color: var(--vintage-paper);
+  padding: 0.75rem 1.2rem;
+  text-align: left;
+  cursor: pointer;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  transition: background 0.2s ease;
+  width: 100%;
+}
+
+.profile-dropdown button:hover {
+  background: rgba(192, 160, 98, 0.15);
+  color: var(--pale-gold);
+}
+
+.profile-dropdown button.danger { color: #e05a5a; }
+.profile-dropdown button.danger:hover { background: rgba(224, 90, 90, 0.1); }
+
+/* ===== Mobile Nav ===== */
+@media (max-width: 768px) {
+  /* Show the nav-row with hamburger + widget together */
+  .nav-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.25rem 0;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  /* Widget moves into nav-row, loses absolute positioning */
+  #user-widget {
+    position: static;
+  }
+
+  #nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    width: 100%;
+    padding: 0 0 0.5rem 0;
+  }
+
+  #nav-links.open {
+    display: flex;
+  }
+
+  #nav-links li {
+    width: 100%;
+  }
+
+  #nav-links a {
+    justify-content: center;
+    padding: 0.75rem 1rem;
+    border-top: 1px solid rgba(192, 160, 98, 0.15);
+    border-radius: 0;
+  }
+
+  /* Dropdown opens downward but clipped — flip it */
+  .profile-dropdown {
+    right: 0;
+    left: auto;
+  }
 }
 
 /* ===== Main Content ===== */
@@ -1026,110 +1185,5 @@ footer p {
 
   footer {
     padding: 1.5rem 1rem;
-  }
-}
-
-/* ===== User Widget ===== */
-#user-widget {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  z-index: 200;
-}
-
-.widget-login-btn {
-  color: var(--pale-gold);
-  border: 1px solid var(--antique-gold);
-  padding: 0.4rem 1rem;
-  border-radius: 20px;
-  text-decoration: none;
-  font-size: 0.95rem;
-  background: rgba(26, 42, 74, 0.8);
-  transition: all 0.3s ease;
-  white-space: nowrap;
-}
-
-.widget-login-btn:hover {
-  background: var(--antique-gold);
-  color: var(--ink);
-}
-
-.profile-pill {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: rgba(26, 42, 74, 0.9);
-  border: 1px solid var(--antique-gold);
-  border-radius: 20px;
-  padding: 0.4rem 1rem;
-  cursor: pointer;
-}
-
-.profile-name {
-  color: var(--pale-gold);
-  font-size: 0.95rem;
-  font-weight: 600;
-  white-space: nowrap;
-}
-
-.profile-house {
-  font-size: 0.75rem;
-  padding: 0.15rem 0.6rem;
-  border-radius: 10px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-}
-
-.house-gryffindor { background: #740001; color: #ffd700; }
-.house-slytherin  { background: #1a472a; color: #aaaaaa; }
-.house-ravenclaw  { background: #0e1a40; color: #946b2d; }
-.house-hufflepuff { background: #ecb939; color: #372e29; }
-
-.profile-dropdown {
-  display: none;
-  position: absolute;
-  top: calc(100% + 8px);
-  right: 0;
-  background: rgba(13, 27, 42, 0.97);
-  border: 1px solid var(--antique-gold);
-  border-radius: 8px;
-  overflow: hidden;
-  min-width: 200px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.5);
-  flex-direction: column;
-}
-
-.profile-pill:hover .profile-dropdown {
-  display: flex;
-}
-
-.profile-dropdown button {
-  background: none;
-  border: none;
-  color: var(--vintage-paper);
-  padding: 0.75rem 1.2rem;
-  text-align: left;
-  cursor: pointer;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1rem;
-  transition: background 0.2s ease;
-  width: 100%;
-}
-
-.profile-dropdown button:hover {
-  background: rgba(192, 160, 98, 0.15);
-  color: var(--pale-gold);
-}
-
-.profile-dropdown button.danger { color: #e05a5a; }
-.profile-dropdown button.danger:hover { background: rgba(224, 90, 90, 0.1); }
-
-@media (max-width: 768px) {
-  #user-widget {
-    position: static;
-    display: flex;
-    justify-content: flex-end;
-    padding: 0.5rem 1rem;
   }
 }

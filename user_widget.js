@@ -3,10 +3,12 @@ document.addEventListener('DOMContentLoaded', function () {
   const widget = document.getElementById('user-widget');
   if (!widget) return;
 
+  const onSortingHatPage = window.location.pathname.includes('sortinghat');
+
   auth.onAuthStateChanged(function (user) {
-    sessionStorage.removeItem('redirectingToSortingHat'); 
     if (user) {
       const house = localStorage.getItem('house_' + user.uid);
+      const dismissed = localStorage.getItem('sortinghat_dismissed_' + user.uid);
       const name = user.email.split('@')[0];
 
       widget.innerHTML = `
@@ -21,42 +23,59 @@ document.addEventListener('DOMContentLoaded', function () {
         </div>
       `;
 
-      if (!house && !sessionStorage.getItem('redirectingToSortingHat')) {
-          promptSortingHat();
-        }
+      // Click to toggle dropdown on touch devices
+      const pill = widget.querySelector('.profile-pill');
+      if (pill) {
+        pill.addEventListener('click', function (e) {
+          if (window.innerWidth <= 768) {
+            pill.classList.toggle('active');
+            e.stopPropagation();
+          }
+        });
+        document.addEventListener('click', function () {
+          pill.classList.remove('active');
+        });
+      }
+
+      if (!house && !dismissed && !onSortingHatPage) {
+        promptSortingHat(user.uid);
+      }
 
     } else {
       widget.innerHTML = `<a href="login.html" class="widget-login-btn">🔐 Login</a>`;
     }
   });
 
-  window.promptSortingHat = function () {
-  if (document.querySelector('.modal-overlay')) return;
-  
-  const overlay = document.createElement('div');
-  overlay.className = 'modal-overlay';
-  overlay.innerHTML = `
-    <div class="modal-box">
-      <div class="modal-icon">🎩</div>
-      <p class="modal-message">
-        "Ah, a new face in the Great Hall...<br><br>
-        The Sorting Hat senses great potential in you, but first —
-        I must know where you truly belong."
-      </p>
-      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1rem">
-        <button class="modal-ok" id="sort-yes">I'm ready!</button>
-        <button class="modal-ok" id="sort-no" style="background:none;border-color:rgba(192,160,98,0.4)">Maybe later</button>
-      </div>
-    </div>
-  `;
-  document.body.appendChild(overlay);
+  window.promptSortingHat = function (uid) {
+    if (document.querySelector('.modal-overlay')) return;
 
-  document.getElementById('sort-yes').addEventListener('click', () => {
-    overlay.remove();
-    sessionStorage.setItem('redirectingToSortingHat', 'true');
-    window.location.href = 'sortinghat.html';
-  });
-  document.getElementById('sort-no').addEventListener('click', () => overlay.remove());
+    const overlay = document.createElement('div');
+    overlay.className = 'modal-overlay';
+    overlay.innerHTML = `
+      <div class="modal-box">
+        <div class="modal-icon">🎩</div>
+        <p class="modal-message">
+          "Ah, a new face in the Great Hall...<br><br>
+          The Sorting Hat senses great potential in you, but first —
+          I must know where you truly belong."
+        </p>
+        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1rem">
+          <button class="modal-ok" id="sort-yes">I'm ready!</button>
+          <button class="modal-ok" id="sort-no" style="background:none;border-color:rgba(192,160,98,0.4)">Maybe later</button>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(overlay);
+
+    document.getElementById('sort-yes').addEventListener('click', () => {
+      overlay.remove();
+      window.location.href = 'sortinghat.html';
+    });
+
+    document.getElementById('sort-no').addEventListener('click', () => {
+      if (uid) localStorage.setItem('sortinghat_dismissed_' + uid, 'true');
+      overlay.remove();
+    });
   };
 
   window.handleLogout = function () {
@@ -81,6 +100,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('confirm-delete').addEventListener('click', function () {
       const user = auth.currentUser;
       localStorage.removeItem('house_' + user.uid);
+      localStorage.removeItem('sortinghat_dismissed_' + user.uid);
       user.delete()
         .then(() => window.location.href = 'index.html')
         .catch(() => {
