@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sorting Hat Quiz</title>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="firebase_config.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -12,6 +15,7 @@
     <header>
         <h1>Wanna know which house you belong to?</h1>
         <nav id="main-nav"></nav>
+        <div id="user-widget"></div>
     </header>
 
     <div class="sortinghat-card">
@@ -169,6 +173,10 @@
                     document.getElementById('next-question').style.display = 'none';
                     document.getElementById('back-question').style.display = 'none';
                     document.getElementById('question-number').style.display = 'none';
+                    const user = firebase.auth().currentUser;
+                    if (user) {
+                        localStorage.setItem('house_' + user.uid, house);
+                    }
                 }
             } else {
                 alert('Please select an option.');
@@ -189,6 +197,7 @@
         <p>&copy; 2025 Harry Potter Fanpage</p>
     </footer>
     <script src="navigation.js"></script>
+    <script src="user_widget.js"></script>
     <script src="authentication.js"></script>
 </body>
 

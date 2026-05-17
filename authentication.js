@@ -1,5 +1,3 @@
-// authentication.js
-
 function showAlert(message, type = 'error') {
   const icon = type === 'success' ? '✓' : '✕';
   const overlay = document.createElement('div');
@@ -27,7 +25,6 @@ function toggleForms() {
 document.addEventListener('DOMContentLoaded', function () {
   const auth = firebase.auth();
 
-  // Login
   const loginBtn = document.getElementById('login-btn');
   if (loginBtn) {
     loginBtn.addEventListener('click', function () {
@@ -45,10 +42,10 @@ document.addEventListener('DOMContentLoaded', function () {
           setTimeout(() => window.location.href = 'index.html', 1200);
         })
         .catch(err => {
-          if (err.code === 'auth/user-not-found' || err.code === 'auth/wrong-password' || err.code === 'auth/invalid-credential') {
+          if (['auth/user-not-found', 'auth/wrong-password', 'auth/invalid-credential'].includes(err.code)) {
             showAlert('Invalid email or password.');
           } else if (err.code === 'auth/invalid-email') {
-            showAlert('That doesn\'t look like a valid email address.');
+            showAlert("That doesn't look like a valid email address.");
           } else if (err.code === 'auth/too-many-requests') {
             showAlert('Too many failed attempts. Try again later.');
           } else {
@@ -58,7 +55,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Signup
   const signupBtn = document.getElementById('signup-btn');
   if (signupBtn) {
     signupBtn.addEventListener('click', function () {
@@ -88,9 +84,9 @@ document.addEventListener('DOMContentLoaded', function () {
           if (err.code === 'auth/email-already-in-use') {
             showAlert('That email is already enrolled.');
           } else if (err.code === 'auth/invalid-email') {
-            showAlert('That doesn\'t look like a valid email address.');
+            showAlert("That doesn't look like a valid email address.");
           } else if (err.code === 'auth/weak-password') {
-            showAlert('Password is too weak. Use at least 6 characters.');
+            showAlert('Password too weak. Use at least 6 characters.');
           } else {
             showAlert('Something went wrong. Please try again.');
           }

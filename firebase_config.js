@@ -1,4 +1,3 @@
-// firebase_config.js
 const firebaseConfig = {
   apiKey: "AIzaSyAn0rh-jCWOPee087EmGRP1dPFeNKMPFIo",
   authDomain: "harry-potter-fanpage-77.firebaseapp.com",

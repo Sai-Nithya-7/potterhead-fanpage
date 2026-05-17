@@ -4,12 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Characters</title>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="firebase_config.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
         <h1>Meet the Iconic Characters</h1>
         <nav id="main-nav"></nav>
+        <div id="user-widget"></div>
     </header>
 
     <main class="characters-container">
@@ -105,6 +109,7 @@
         <p>&copy; 2025 Harry Potter Fanpage</p>
     </footer>
     <script src="navigation.js"></script>
+    <script src="user_widget.js"></script>
     <script src="authentication.js"></script>
 </body>
 </html>
