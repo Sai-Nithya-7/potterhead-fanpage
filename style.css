@@ -91,67 +91,9 @@ header h1 {
   z-index: 1;
 }
 
-/* ===== Navigation (generic nav fallback) ===== */
-nav {
-  background: var(--ink);
-  padding: 0.5rem 0;
-  border-top: 1px solid var(--antique-gold);
-  border-bottom: 1px solid var(--antique-gold);
-}
-
-nav ul {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  padding: 0;
-  margin: 0;
-}
-
-nav ul li {
-  list-style-type: none;
-  margin: 0 1rem;
-  position: relative;
-}
-
-nav ul li a {
-  color: var(--pale-gold);
-  font-size: 1.2rem;
-  padding: 0.5rem 1rem;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  font-weight: 600;
-  letter-spacing: 1px;
-  border-radius: 4px;
-}
-
-nav ul li a:hover {
-  color: var(--ivory);
-  background-color: rgba(192, 160, 98, 0.1);
-  transform: translateY(-2px);
-  text-shadow: 0 0 8px var(--glow);
-}
-
-nav ul li a::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  width: 0;
-  height: 1px;
-  background: var(--antique-gold);
-  transition: all 0.3s ease;
-}
-
-nav ul li a:hover::after {
-  width: 80%;
-  left: 10%;
-}
-
-/* ===== Navigation Bar (#main-nav) ===== */
+/* ===== Navigation Bar ===== */
 #main-nav {
-  background: linear-gradient(to right,
-    rgba(10, 16, 40, 0.9),
-    rgba(26, 42, 74, 0.9));
+  background: linear-gradient(to right, rgba(10, 16, 40, 0.9), rgba(26, 42, 74, 0.9));
   padding: 0.5rem 1rem;
   border-top: 1px solid var(--antique-gold);
   border-bottom: 1px solid var(--antique-gold);
@@ -160,21 +102,54 @@ nav ul li a:hover::after {
   z-index: 100;
 }
 
-#main-nav ul {
+/* Hamburger — hidden on desktop */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: 1px solid var(--antique-gold);
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 8px;
+  margin: 0.3rem 0;
+}
+
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--pale-gold);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform-origin: center;
+}
+
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Nav list — desktop */
+#nav-links {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 2rem;
   padding: 0;
   margin: 0;
-  list-style-type: none;
+  list-style: none;
   flex-wrap: wrap;
 }
 
-#main-nav li {
+#nav-links li {
   position: relative;
 }
 
-#main-nav a {
+#nav-links a {
   color: var(--pale-gold);
   text-decoration: none;
   font-size: 1.1rem;
@@ -186,13 +161,13 @@ nav ul li a:hover::after {
   border-radius: 4px;
 }
 
-#main-nav a:hover {
+#nav-links a:hover {
   background-color: rgba(192, 160, 98, 0.2);
   color: var(--ivory);
   transform: translateY(-2px);
 }
 
-#main-nav a::after {
+#nav-links a::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -203,7 +178,7 @@ nav ul li a:hover::after {
   transition: all 0.3s ease;
 }
 
-#main-nav a:hover::after {
+#nav-links a:hover::after {
   width: 100%;
   left: 0;
 }
@@ -398,7 +373,6 @@ footer p {
   padding: 0.5rem 1rem;
   border-radius: 20px;
   border: 1px solid var(--antique-gold);
-  /* Removed absolute positioning — handled per context in responsive block */
 }
 
 #user-name {
@@ -468,7 +442,7 @@ footer p {
   padding: 2rem;
 }
 
-/* ===== Home Page Styles ===== */
+/* ===== Home Page ===== */
 .home-page {
   background-image:
     url('https://ik.imagekit.io/your_account/pics/hogwarts-castle.jpg'),
@@ -550,6 +524,7 @@ footer p {
   display: flex;
   align-items: center;
   gap: 0.8rem;
+  font-family: 'Cormorant Garamond', serif;
 }
 
 .login-button:hover {
@@ -703,6 +678,7 @@ footer p {
 /* ===== Sorting Hat Quiz ===== */
 .sortinghat-card {
   max-width: 700px;
+  width: 90%;
   margin: 3rem auto;
   padding: 3rem;
   background: linear-gradient(145deg, rgba(26, 42, 74, 0.9), rgba(58, 80, 107, 0.8));
@@ -711,7 +687,6 @@ footer p {
   border: 2px solid var(--antique-gold);
   position: relative;
   box-sizing: border-box;
-  width: 90%;
 }
 
 .sortinghat-card::before {
@@ -877,22 +852,32 @@ footer p {
 
 /* ===== Responsive: 768px ===== */
 @media (max-width: 768px) {
-  nav ul li {
-    margin: 0 0.5rem;
+  .hamburger {
+    display: flex;
   }
 
-  nav ul li a {
-    font-size: 1rem;
-    padding: 0.5rem;
+  #nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    width: 100%;
+    padding: 0 0 0.5rem 0;
   }
 
-  #main-nav ul {
-    gap: 0.5rem;
+  #nav-links.open {
+    display: flex;
   }
 
-  #main-nav a {
-    padding: 0.5rem;
-    font-size: 1rem;
+  #nav-links li {
+    width: 100%;
+  }
+
+  #nav-links a {
+    justify-content: center;
+    padding: 0.75rem 1rem;
+    border-top: 1px solid rgba(192, 160, 98, 0.15);
+    border-radius: 0;
   }
 
   .characters-container {
@@ -943,31 +928,6 @@ footer p {
     padding: 1.5rem 1rem;
   }
 
-  nav ul {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  nav ul li {
-    margin: 0.3rem 0;
-  }
-
-  #main-nav ul {
-    flex-direction: column;
-    align-items: center;
-    gap: 0;
-  }
-
-  #main-nav li {
-    width: 100%;
-    text-align: center;
-  }
-
-  #main-nav a {
-    justify-content: center;
-    padding: 0.75rem;
-  }
-
   .characters-container {
     grid-template-columns: 1fr;
     padding: 0.75rem;
@@ -1003,87 +963,5 @@ footer p {
 
   footer {
     padding: 1.5rem 1rem;
-  }
-}
-
-/* ===== Hamburger Menu ===== */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-  width: 44px;
-  height: 44px;
-  background: none;
-  border: 1px solid var(--antique-gold);
-  border-radius: 6px;
-  cursor: pointer;
-  padding: 8px;
-  margin: 0.4rem auto;
-}
-
-.hamburger span {
-  display: block;
-  width: 22px;
-  height: 2px;
-  background: var(--pale-gold);
-  border-radius: 2px;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  transform-origin: center;
-}
-
-/* Animate into X */
-.hamburger.open span:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-}
-.hamburger.open span:nth-child(2) {
-  opacity: 0;
-  transform: scaleX(0);
-}
-.hamburger.open span:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
-}
-
-/* Nav list — desktop default */
-#nav-links {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  flex-wrap: wrap;
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-  .hamburger {
-    display: flex;
-  }
-
-  #nav-links {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    gap: 0;
-    width: 100%;
-    padding-bottom: 0.5rem;
-  }
-
-  #nav-links.open {
-    display: flex;
-  }
-
-  #nav-links li {
-    width: 100%;
-    text-align: center;
-  }
-
-  #nav-links a {
-    display: block;
-    padding: 0.75rem 1rem;
-    justify-content: center;
-    border-top: 1px solid rgba(192, 160, 98, 0.15);
   }
 }
