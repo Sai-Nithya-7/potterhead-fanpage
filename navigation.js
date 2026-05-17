@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
       <li><a href="about.html">About</a></li>
       <li><a href="characters.html">Characters</a></li>
       <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="sortinghat.html">Sorting Hat</a></li>
+      <li><a href="sorting_hat.html">Sorting Hat</a></li>
     </ul>
   `;
 
