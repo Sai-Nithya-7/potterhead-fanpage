@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
   if (!widget) return;
 
   auth.onAuthStateChanged(function (user) {
+    sessionStorage.removeItem('redirectingToSortingHat'); 
     if (user) {
       const house = localStorage.getItem('house_' + user.uid);
       const name = user.email.split('@')[0];
@@ -20,7 +21,9 @@ document.addEventListener('DOMContentLoaded', function () {
         </div>
       `;
 
-      if (!house) promptSortingHat();
+      if (!house && !sessionStorage.getItem('redirectingToSortingHat')) {
+          promptSortingHat();
+        }
 
     } else {
       widget.innerHTML = `<a href="login.html" class="widget-login-btn">🔐 Login</a>`;
@@ -28,28 +31,32 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   window.promptSortingHat = function () {
-    if (document.querySelector('.modal-overlay')) return;
-    const overlay = document.createElement('div');
-    overlay.className = 'modal-overlay';
-    overlay.innerHTML = `
-      <div class="modal-box">
-        <div class="modal-icon">🎩</div>
-        <p class="modal-message">
-          "Ah, a new face in the Great Hall...<br><br>
-          The Sorting Hat senses great potential in you, but first —
-          I must know where you truly belong."
-        </p>
-        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1rem">
-          <button class="modal-ok" id="sort-yes">I'm ready!</button>
-          <button class="modal-ok" id="sort-no" style="background:none;border-color:rgba(192,160,98,0.4)">Maybe later</button>
-        </div>
+  if (document.querySelector('.modal-overlay')) return;
+  
+  const overlay = document.createElement('div');
+  overlay.className = 'modal-overlay';
+  overlay.innerHTML = `
+    <div class="modal-box">
+      <div class="modal-icon">🎩</div>
+      <p class="modal-message">
+        "Ah, a new face in the Great Hall...<br><br>
+        The Sorting Hat senses great potential in you, but first —
+        I must know where you truly belong."
+      </p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1rem">
+        <button class="modal-ok" id="sort-yes">I'm ready!</button>
+        <button class="modal-ok" id="sort-no" style="background:none;border-color:rgba(192,160,98,0.4)">Maybe later</button>
       </div>
-    `;
-    document.body.appendChild(overlay);
-    document.getElementById('sort-yes').addEventListener('click', () => {
-      window.location.href = 'sortinghat.html';
-    });
-    document.getElementById('sort-no').addEventListener('click', () => overlay.remove());
+    </div>
+  `;
+  document.body.appendChild(overlay);
+
+  document.getElementById('sort-yes').addEventListener('click', () => {
+    overlay.remove();
+    sessionStorage.setItem('redirectingToSortingHat', 'true');
+    window.location.href = 'sortinghat.html';
+  });
+  document.getElementById('sort-no').addEventListener('click', () => overlay.remove());
   };
 
   window.handleLogout = function () {
