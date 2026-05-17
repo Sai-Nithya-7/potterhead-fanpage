@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sorting Hat Quiz</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -103,7 +103,7 @@
             questionHTML += '<div class="sortinghat-options">';
             currentQuestion.options.forEach((option, index) => {
                 questionHTML += `
-                <label>
+                <label class="sortinghat-option">
                     <input type="radio" name="quiz-option" value="${option}">
                     ${option}
                 </label>
@@ -138,7 +138,7 @@
             const houseCounts = { Gryffindor: 0, Ravenclaw: 0, Hufflepuff: 0, Slytherin: 0 };
 
             answers.forEach(answer => {
-                if (["Bravery", "Owl", "Defense Against the Dark Arts", "Exploring the Forbidden Forest", "Sword of Gryffindor"].includes(answer)) {
+                if (["Bravery", "Owl", "Defence Against the Dark Arts", "Exploring the Forbidden Forest", "Sword of Gryffindor"].includes(answer)) {
                     houseCounts.Gryffindor++;
                 }
                 if (["Intelligence", "Cat", "Charms", "In the library", "Rowena Ravenclaw's diadem"].includes(answer)) {

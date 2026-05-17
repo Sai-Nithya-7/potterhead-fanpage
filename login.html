@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
 </head>
-<body>
+<body class="login-page">
     <div class="back-to-home">
         <button class="home-button">
             <i class="fas fa-arrow-left"></i> Back to Hogwarts
@@ -22,14 +22,14 @@
             <form class="auth-form">
                 <div class="form-group">
                     <i class="input-icon fas fa-envelope"></i>
-                    <input type="email" class="auth-input" placeholder="Owl Post Address" required>
+                    <input type="email" id="login-email" class="auth-input" placeholder="Owl Post Address" required>
                 </div>
                 <div class="form-group">
                     <i class="input-icon fas fa-lock"></i>
-                    <input type="password" class="auth-input" placeholder="Secret Charm" required>
+                    <input type="password" id="login-password" class="auth-input" placeholder="Secret Charm" required>
                 </div>
                 <div class="button-container">
-                    <button type="submit" class="auth-button">
+                    <button type="button" id="login-btn" class="auth-button">
                         <i class="fas fa-hat-wizard"></i> Enter the Great Hall
                     </button>
                 </div>
@@ -46,18 +46,18 @@
             <form class="auth-form">
                 <div class="form-group">
                     <i class="input-icon fas fa-envelope"></i>
-                    <input type="email" class="auth-input" placeholder="Owl Post Address" required>
+                    <input type="email" id="signup-email" class="auth-input" placeholder="Owl Post Address" required>
                 </div>
                 <div class="form-group">
                     <i class="input-icon fas fa-lock"></i>
-                    <input type="password" class="auth-input" placeholder="Create Secret Charm" required>
+                    <input type="password" id="signup-password" class="auth-input" placeholder="Create Secret Charm" required>
                 </div>
                 <div class="form-group">
                     <i class="input-icon fas fa-lock"></i>
-                    <input type="password" class="auth-input" placeholder="Confirm Secret Charm" required>
+                    <input type="password" id="confirm-password" class="auth-input" placeholder="Confirm Secret Charm" required>
                 </div>
                 <div class="button-container">
-                    <button type="submit" class="auth-button">
+                    <button type="button" id="signup-btn" class="auth-button">
                         <i class="fas fa-feather-alt"></i> Submit Application
                     </button>
                 </div>
@@ -88,5 +88,6 @@
             window.location.href = 'index.html';
         });
     </script>
+    <script src="authentication.js"></script>
 </body>
 </html>

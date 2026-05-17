@@ -1,1034 +1,1007 @@
+/* ===== Font Import ===== */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;500;700&display=swap');
+
 /* ===== Dark Academia Gold Theme ===== */
 :root {
-    /* Color Palette */
-    --midnight-blue: #0a1220;
-    --navy-blue: #1a2a4a;
-    --dusty-blue: #3a506b;
-    --antique-gold: #c0a062;
-    --pale-gold: #e4d6a7;
-    --ivory: #f0ebd8;
-    --ink: #0d1b2a;
-    --vintage-paper: #e8e1cf;
-    --glow: rgba(192, 160, 98, 0.15);
-    --gutter: #2c3e50;
-  }
-  
-  /* ===== Base Styles ===== */
-  body {
-    font-family: 'Cormorant Garamond', 'Playfair Display', serif;
-    background-color: var(--midnight-blue);
-    color: var(--ivory);
-    background-image: 
-      url('https://ik.imagekit.io/your_account/pics/old-paper-texture.jpg'),
-      linear-gradient(to bottom, var(--midnight-blue), var(--navy-blue));
-    background-blend-mode: multiply;
-    letter-spacing: 0.3px;
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  /* ===== Scrollbar ===== */
-  ::-webkit-scrollbar {
-    width: 10px;
-    height: 8px;
-  }
-  ::-webkit-scrollbar-track {
-    background: var(--ink);
-  }
-  ::-webkit-scrollbar-thumb {
-    background: var(--antique-gold);
-    border-radius: 5px;
-  }
-  
-  /* ===== Header ===== */
-  header {
-    background: linear-gradient(135deg, var(--navy-blue) 0%, var(--midnight-blue) 100%);
-    color: var(--pale-gold);
-    padding: 2rem 1rem;
-    text-align: center;
-    margin-bottom: 1rem;
-    border-bottom: 3px solid var(--antique-gold);
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-  }
-  
-  header::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('https://ik.imagekit.io/your_account/pics/ink-splatter.png');
-    opacity: 0.03;
-    pointer-events: none;
-  }
-  
-  header h1 {
-    font-size: 3rem;
-    margin: 0;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    letter-spacing: 2px;
-    font-weight: 700;
-    position: relative;
-    z-index: 1;
-  }
-  
-  /* ===== Navigation ===== */
-  nav {
-    background: var(--ink);
-    padding: 0.5rem 0;
-    border-top: 1px solid var(--antique-gold);
-    border-bottom: 1px solid var(--antique-gold);
-  }
-  
-  nav ul {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    padding: 0;
-    margin: 0;
-  }
-  
-  nav ul li {
-    list-style-type: none;
-    margin: 0 1rem;
-    position: relative;
-  }
-  
-  nav ul li a {
-    color: var(--pale-gold);
-    font-size: 1.2rem;
-    padding: 0.5rem 1rem;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    font-weight: 600;
-    letter-spacing: 1px;
-    border-radius: 4px;
-  }
-  
-  nav ul li a:hover {
-    color: var(--ivory);
-    background-color: rgba(192, 160, 98, 0.1);
-    transform: translateY(-2px);
-    text-shadow: 0 0 8px var(--glow);
-  }
-  
-  nav ul li a::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 0;
-    height: 1px;
-    background: var(--antique-gold);
-    transition: all 0.3s ease;
-  }
-  
-  nav ul li a:hover::after {
-    width: 80%;
-    left: 10%;
-  }
-  
-  /* ===== Main Content ===== */
-  main {
-    padding: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 90%;
-    background-color: rgba(26, 42, 74, 0.7);
-    border-radius: 8px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    border: 1px solid var(--antique-gold);
-    position: relative;
-    margin-bottom: 2rem;
-    backdrop-filter: blur(4px);
-  }
-  
-  main::before {
-    content: "";
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    right: 10px;
-    bottom: 10px;
-    border: 1px solid rgba(192, 160, 98, 0.3);
-    border-radius: 4px;
-    pointer-events: none;
-  }
-  
-  /* ===== Character Cards ===== */
-  .character-card {
-    background: linear-gradient(145deg, rgba(26, 42, 74, 0.9), rgba(58, 80, 107, 0.7));
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-    transition: all 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid var(--antique-gold);
-    position: relative;
-  }
-  
-  .character-card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('https://ik.imagekit.io/your_account/pics/parchment-texture.jpg') center/cover;
-    opacity: 0.1;
-    z-index: 0;
-  }
-  
-  .character-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), 0 0 15px var(--glow);
-  }
-  
-  .character-card img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-bottom: 3px solid var(--antique-gold);
-  }
-  
-  .character-card-content {
-    padding: 1.5rem;
-    position: relative;
-    z-index: 1;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .character-card h2 {
-    padding-top: 0.7rem;
-    padding-left: 0.7rem;
-    padding-right: 0.7rem;
-    font-size: 1.5rem;
-    margin: 0 0 1rem 0;
-    color: var(--pale-gold);
-    text-align: center;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-  }
-  
-  .character-card p {
-    font-size: 1rem;
-    line-height: 1.6;
-    margin: 0 0 1rem 0;
-    padding: 0 1.5rem;
-    color: var(--vintage-paper);
-    flex-grow: 1;
-  }
-  
-  .character-card .house-badge {
-    width: 40px;
-    height: 40px;
-    position: absolute;
-    top: -20px;
-    right: 20px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    z-index: 2;
-  }
-  
-  /* ===== Gallery ===== */
-  .gallery-container {
-    max-width: 100%;
-    overflow-x: hidden;
-    padding: 2rem 0;
-    background: linear-gradient(to right, rgba(26, 42, 74, 0.9), rgba(58, 80, 107, 0.9));
-    border-top: 1px solid var(--antique-gold);
-    border-bottom: 1px solid var(--antique-gold);
-    margin: 2rem 0;
-    position: relative;
-  }
-  
-  .gallery-container::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('https://ik.imagekit.io/your_account/pics/magic-sparkles.png') center/cover;
-    opacity: 0.1;
-    pointer-events: none;
-  }
-  
-  .gallery {
-    display: flex;
-    overflow-x: auto;
-    gap: 1.5rem;
-    padding: 1.5rem;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-  }
-  
-  .gallery::-webkit-scrollbar-track {
-    background: var(--navy-blue);
-  }
-  
-  .gallery::-webkit-scrollbar-thumb {
-    background: var(--antique-gold);
-  }
-  
-  .gallery img {
-    flex: 0 0 auto;
-    width: 280px;
-    height: 220px;
-    object-fit: cover;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    transition: all 0.3s ease;
-    scroll-snap-align: start;
-    border: 2px solid var(--antique-gold);
-    border-radius: 5px;
-    filter: sepia(0.3) brightness(0.9);
-  }
-  
-  .gallery img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 25px rgba(192, 160, 98, 0.4);
-    filter: sepia(0) brightness(1);
-    z-index: 10;
-  }
-  
-  /* ===== Footer ===== */
-  footer {
-    background: linear-gradient(to right, var(--midnight-blue), var(--ink));
-    color: var(--pale-gold);
-    text-align: center;
-    padding: 2rem;
-    margin-top: auto;
-    border-top: 1px solid var(--antique-gold);
-    position: relative;
-  }
-  
-  footer p {
-    margin: 0.5rem 0;
-    font-size: 1rem;
-  }
-  
-  /* ===== User Display ===== */
-  .user-display {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background-color: rgba(26, 42, 74, 0.8);
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    border: 1px solid var(--antique-gold);
-  }
-  
-  #user-name {
-    font-weight: bold;
-    color: var(--pale-gold);
-  }
-  
-  #logout-button {
-    padding: 0.5rem 1rem;
-    background-color: var(--navy-blue);
-    color: var(--pale-gold);
-    border: 1px solid var(--antique-gold);
-    border-radius: 20px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-weight: 600;
-  }
-  
-  #logout-button:hover {
-    background-color: var(--dusty-blue);
-    transform: translateY(-2px);
-  }
-  
-  /* ===== About Page ===== */
-  .about-section {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem;
-    background-color: rgba(26, 42, 74, 0.7);
-    border-radius: 8px;
-    border: 1px solid var(--antique-gold);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-  }
-  
-  .about-section h2 {
-    color: var(--pale-gold);
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    position: relative;
-  }
-  
-  .about-section h2::after {
-    content: "";
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 2px;
-    background: var(--antique-gold);
-  }
-  
-  .about-section p {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: var(--vintage-paper);
-    margin-bottom: 1.5rem;
-    text-align: justify;
-  }
-  
-  /* ===== Characters Page ===== */
-  .characters-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 2rem;
-    padding: 2rem;
-  }
-  
-  /* ===== Home Page Styles ===== */
-.home-page {
-    background-image: 
-      url('https://ik.imagekit.io/your_account/pics/hogwarts-castle.jpg'),
-      linear-gradient(to bottom, rgba(10, 16, 40, 0.9), rgba(26, 42, 74, 0.9));
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-blend-mode: multiply;
-  }
-  
-  .home-page header {
-    background: linear-gradient(135deg, rgba(26, 42, 74, 0.9), rgba(10, 16, 40, 0.9));
-    border-bottom: 3px solid var(--antique-gold);
-    padding: 3rem 1rem;
-  }
-  
-  .home-page header h1 {
-    font-size: 3.5rem;
-    color: var(--pale-gold);
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
-    margin-bottom: 1rem;
-  }
-  
-  .home-page main {
-    text-align: center;
-    padding: 4rem 2rem;
-    background-color: rgba(26, 42, 74, 0.7);
-    border: 2px solid var(--antique-gold);
-    max-width: 800px;
-    margin: 3rem auto;
-    border-radius: 12px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
-  }
-  
-  .home-page h2 {
-    color: var(--pale-gold);
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    position: relative;
-  }
-  
-  .home-page h2::after {
-    content: "";
-    position: absolute;
-    bottom: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 150px;
-    height: 2px;
-    background: var(--antique-gold);
-  }
-  
-  .home-page p {
-    color: var(--vintage-paper);
-    font-size: 1.3rem;
-    line-height: 1.8;
-    margin-bottom: 3rem;
-  }
-  
-  /* ===== Login Button Styles ===== */
-  .lgn-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 2rem;
-  }
-  
-  .login-button {
-    background: linear-gradient(135deg, var(--navy-blue), var(--dusty-blue));
-    color: var(--pale-gold);
-    border: 2px solid var(--antique-gold);
-    padding: 1.2rem 3rem;
-    font-size: 1.3rem;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-weight: 600;
-    letter-spacing: 1px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-  }
-  
-  .login-button:hover {
-    background: linear-gradient(135deg, var(--dusty-blue), var(--navy-blue));
-    color: var(--ivory);
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(192, 160, 98, 0.4);
-  }
-  
-  .login-button:active {
-    transform: translateY(-1px);
-  }
-  
-  /* ===== Footer Styles ===== */
-  .home-page footer {
-    background: linear-gradient(to right, var(--midnight-blue), var(--ink));
-    color: var(--pale-gold);
-    padding: 2rem;
-    border-top: 1px solid var(--antique-gold);
-    text-align: center;
-  }
-  
-  /* ===== Navigation Bar Styles ===== */
+  --midnight-blue: #0a1220;
+  --navy-blue: #1a2a4a;
+  --dusty-blue: #3a506b;
+  --antique-gold: #c0a062;
+  --pale-gold: #e4d6a7;
+  --ivory: #f0ebd8;
+  --ink: #0d1b2a;
+  --vintage-paper: #e8e1cf;
+  --glow: rgba(192, 160, 98, 0.15);
+  --gutter: #2c3e50;
+}
+
+/* ===== Base Styles ===== */
+body {
+  font-family: 'Cormorant Garamond', 'Playfair Display', serif;
+  background-color: var(--midnight-blue);
+  color: var(--ivory);
+  background-image:
+    url('https://ik.imagekit.io/your_account/pics/old-paper-texture.jpg'),
+    linear-gradient(to bottom, var(--midnight-blue), var(--navy-blue));
+  background-blend-mode: multiply;
+  letter-spacing: 0.3px;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== Login Page Body Override ===== */
+body.login-page {
+  background-image:
+    url('https://ik.imagekit.io/your_account/pics/hogwarts-library.jpg'),
+    linear-gradient(to bottom, var(--midnight-blue), var(--navy-blue));
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-blend-mode: multiply;
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--ink);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--antique-gold);
+  border-radius: 5px;
+}
+
+/* ===== Header ===== */
+header {
+  background: linear-gradient(135deg, var(--navy-blue) 0%, var(--midnight-blue) 100%);
+  color: var(--pale-gold);
+  padding: 2rem 1rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  border-bottom: 3px solid var(--antique-gold);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://ik.imagekit.io/your_account/pics/ink-splatter.png');
+  opacity: 0.03;
+  pointer-events: none;
+}
+
+header h1 {
+  font-size: clamp(1.6rem, 5vw, 3rem);
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  letter-spacing: 2px;
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== Navigation (generic nav fallback) ===== */
+nav {
+  background: var(--ink);
+  padding: 0.5rem 0;
+  border-top: 1px solid var(--antique-gold);
+  border-bottom: 1px solid var(--antique-gold);
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li {
+  list-style-type: none;
+  margin: 0 1rem;
+  position: relative;
+}
+
+nav ul li a {
+  color: var(--pale-gold);
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border-radius: 4px;
+}
+
+nav ul li a:hover {
+  color: var(--ivory);
+  background-color: rgba(192, 160, 98, 0.1);
+  transform: translateY(-2px);
+  text-shadow: 0 0 8px var(--glow);
+}
+
+nav ul li a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 1px;
+  background: var(--antique-gold);
+  transition: all 0.3s ease;
+}
+
+nav ul li a:hover::after {
+  width: 80%;
+  left: 10%;
+}
+
+/* ===== Navigation Bar (#main-nav) ===== */
 #main-nav {
-    background: linear-gradient(to right, 
-        rgba(10, 16, 40, 0.9), 
-        rgba(26, 42, 74, 0.9));
-    padding: 0.5rem 1rem;
-    border-top: 1px solid var(--antique-gold);
-    border-bottom: 1px solid var(--antique-gold);
-    position: sticky;
-    top: 0;
-    z-index: 100;
+  background: linear-gradient(to right,
+    rgba(10, 16, 40, 0.9),
+    rgba(26, 42, 74, 0.9));
+  padding: 0.5rem 1rem;
+  border-top: 1px solid var(--antique-gold);
+  border-bottom: 1px solid var(--antique-gold);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 #main-nav ul {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    padding: 0;
-    margin: 0;
-    list-style-type: none;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  flex-wrap: wrap;
 }
 
 #main-nav li {
-    position: relative;
+  position: relative;
 }
 
 #main-nav a {
-    color: var(--pale-gold);
-    text-decoration: none;
-    font-size: 1.1rem;
-    padding: 0.75rem 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    transition: all 0.3s ease;
-    border-radius: 4px;
+  color: var(--pale-gold);
+  text-decoration: none;
+  font-size: 1.1rem;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  border-radius: 4px;
 }
 
 #main-nav a:hover {
-    background-color: rgba(192, 160, 98, 0.2);
-    color: var(--ivory);
-    transform: translateY(-2px);
+  background-color: rgba(192, 160, 98, 0.2);
+  color: var(--ivory);
+  transform: translateY(-2px);
 }
 
 #main-nav a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 0;
-    height: 2px;
-    background: var(--antique-gold);
-    transition: all 0.3s ease;
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--antique-gold);
+  transition: all 0.3s ease;
 }
 
 #main-nav a:hover::after {
-    width: 100%;
-    left: 0;
+  width: 100%;
+  left: 0;
 }
 
-/* Responsive Nav */
-@media (max-width: 768px) {
-    #main-nav ul {
-        gap: 0.5rem;
-    }
-    
-    #main-nav a {
-        padding: 0.5rem;
-        font-size: 1rem;
-    }
+/* ===== Main Content ===== */
+main {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto 2rem;
+  width: 90%;
+  box-sizing: border-box;
+  background-color: rgba(26, 42, 74, 0.7);
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--antique-gold);
+  position: relative;
+  backdrop-filter: blur(4px);
 }
 
-@media (max-width: 480px) {
-    #main-nav ul {
-        flex-direction: column;
-        align-items: center;
-        gap: 0;
-    }
-    
-    #main-nav li {
-        width: 100%;
-        text-align: center;
-    }
-    
-    #main-nav a {
-        justify-content: center;
-        padding: 0.75rem;
-    }
-}
-  
-  /* ===== Responsive Styles ===== */
-  @media (max-width: 768px) {
-    .home-page header h1 {
-      font-size: 2.5rem;
-    }
-    
-    .home-page h2 {
-      font-size: 2rem;
-    }
-    
-    .home-page p {
-      font-size: 1.1rem;
-    }
-    
-    #main-nav ul {
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-    }
-    
-    .login-button {
-      padding: 1rem 2rem;
-      font-size: 1.1rem;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .home-page header h1 {
-      font-size: 2rem;
-    }
-    
-    .home-page h2 {
-      font-size: 1.8rem;
-    }
-    
-    .home-page main {
-      padding: 2rem 1rem;
-    }
-  }
-  
-  /* Additional styles specific to login page */
-  body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background-image: 
-        url('https://ik.imagekit.io/your_account/pics/hogwarts-library.jpg'),
-        linear-gradient(to bottom, var(--midnight-blue), var(--navy-blue));
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-blend-mode: multiply;
+main::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  border: 1px solid rgba(192, 160, 98, 0.3);
+  border-radius: 4px;
+  pointer-events: none;
 }
 
+/* ===== Character Cards ===== */
+.character-card {
+  background: linear-gradient(145deg, rgba(26, 42, 74, 0.9), rgba(58, 80, 107, 0.7));
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--antique-gold);
+  position: relative;
+}
+
+.character-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('https://ik.imagekit.io/your_account/pics/parchment-texture.jpg') center/cover;
+  opacity: 0.1;
+  z-index: 0;
+}
+
+.character-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), 0 0 15px var(--glow);
+}
+
+.character-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-bottom: 3px solid var(--antique-gold);
+}
+
+.character-card-content {
+  padding: 1.5rem;
+  position: relative;
+  z-index: 1;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.character-card h2 {
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  padding: 0.7rem 0.7rem 0;
+  margin: 0 0 1rem 0;
+  color: var(--pale-gold);
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.character-card p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0 0 1rem 0;
+  padding: 0 0.5rem;
+  color: var(--vintage-paper);
+  flex-grow: 1;
+}
+
+.character-card .house-badge {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: -20px;
+  right: 20px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 2;
+}
+
+/* ===== Gallery ===== */
+.gallery-container {
+  width: 100%;
+  overflow-x: hidden;
+  padding: 2rem 0;
+  background: linear-gradient(to right, rgba(26, 42, 74, 0.9), rgba(58, 80, 107, 0.9));
+  border-top: 1px solid var(--antique-gold);
+  border-bottom: 1px solid var(--antique-gold);
+  margin: 2rem 0;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.gallery-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://ik.imagekit.io/your_account/pics/magic-sparkles.png') center/cover;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.gallery {
+  display: flex;
+  overflow-x: auto;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.gallery::-webkit-scrollbar-track {
+  background: var(--navy-blue);
+}
+
+.gallery::-webkit-scrollbar-thumb {
+  background: var(--antique-gold);
+}
+
+.gallery img {
+  flex: 0 0 auto;
+  width: 280px;
+  height: 220px;
+  object-fit: cover;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+  scroll-snap-align: start;
+  border: 2px solid var(--antique-gold);
+  border-radius: 5px;
+  filter: sepia(0.3) brightness(0.9);
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(192, 160, 98, 0.4);
+  filter: sepia(0) brightness(1);
+  z-index: 10;
+}
+
+/* ===== Footer ===== */
+footer {
+  background: linear-gradient(to right, var(--midnight-blue), var(--ink));
+  color: var(--pale-gold);
+  text-align: center;
+  padding: 2rem;
+  margin-top: auto;
+  border-top: 1px solid var(--antique-gold);
+}
+
+footer p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
+
+/* ===== User Display ===== */
+.user-display {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: rgba(26, 42, 74, 0.8);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  border: 1px solid var(--antique-gold);
+  /* Removed absolute positioning — handled per context in responsive block */
+}
+
+#user-name {
+  font-weight: bold;
+  color: var(--pale-gold);
+}
+
+#logout-button {
+  padding: 0.5rem 1rem;
+  background-color: var(--navy-blue);
+  color: var(--pale-gold);
+  border: 1px solid var(--antique-gold);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+#logout-button:hover {
+  background-color: var(--dusty-blue);
+  transform: translateY(-2px);
+}
+
+/* ===== About Page ===== */
+.about-section {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: rgba(26, 42, 74, 0.7);
+  border-radius: 8px;
+  border: 1px solid var(--antique-gold);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+.about-section h2 {
+  color: var(--pale-gold);
+  text-align: center;
+  font-size: clamp(1.4rem, 3.5vw, 2rem);
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.about-section h2::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 2px;
+  background: var(--antique-gold);
+}
+
+.about-section p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--vintage-paper);
+  margin-bottom: 1.5rem;
+  text-align: justify;
+}
+
+/* ===== Characters Page ===== */
+.characters-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+}
+
+/* ===== Home Page Styles ===== */
+.home-page {
+  background-image:
+    url('https://ik.imagekit.io/your_account/pics/hogwarts-castle.jpg'),
+    linear-gradient(to bottom, rgba(10, 16, 40, 0.9), rgba(26, 42, 74, 0.9));
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-blend-mode: multiply;
+}
+
+.home-page header {
+  background: linear-gradient(135deg, rgba(26, 42, 74, 0.9), rgba(10, 16, 40, 0.9));
+  border-bottom: 3px solid var(--antique-gold);
+  padding: 3rem 1rem;
+}
+
+.home-page header h1 {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  color: var(--pale-gold);
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+  margin-bottom: 1rem;
+}
+
+.home-page main {
+  text-align: center;
+  padding: 4rem 2rem;
+  background-color: rgba(26, 42, 74, 0.7);
+  border: 2px solid var(--antique-gold);
+  max-width: 800px;
+  margin: 3rem auto;
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+}
+
+.home-page h2 {
+  color: var(--pale-gold);
+  font-size: clamp(1.6rem, 4vw, 2.5rem);
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.home-page h2::after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 2px;
+  background: var(--antique-gold);
+}
+
+.home-page p {
+  color: var(--vintage-paper);
+  font-size: 1.3rem;
+  line-height: 1.8;
+  margin-bottom: 3rem;
+}
+
+/* ===== Login Button ===== */
+.lgn-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.login-button {
+  background: linear-gradient(135deg, var(--navy-blue), var(--dusty-blue));
+  color: var(--pale-gold);
+  border: 2px solid var(--antique-gold);
+  padding: 1.2rem 3rem;
+  font-size: 1.3rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.login-button:hover {
+  background: linear-gradient(135deg, var(--dusty-blue), var(--navy-blue));
+  color: var(--ivory);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(192, 160, 98, 0.4);
+}
+
+.login-button:active {
+  transform: translateY(-1px);
+}
+
+/* ===== Back to Home / Home Button ===== */
 .back-to-home {
-    position: absolute;
-    top: 20px;
-    left: 20px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
 }
 
 .home-button {
-    background: rgba(26, 42, 74, 0.7);
-    color: var(--pale-gold);
-    border: 1px solid var(--antique-gold);
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1rem;
+  background: rgba(26, 42, 74, 0.7);
+  color: var(--pale-gold);
+  border: 1px solid var(--antique-gold);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
 }
 
 .home-button:hover {
-    background: var(--antique-gold);
-    color: var(--ink);
+  background: var(--antique-gold);
+  color: var(--ink);
 }
 
-footer {
-    margin-top: auto;
-    text-align: center;
-    padding: 1.5rem;
-    color: var(--pale-gold);
-    background-color: rgba(10, 16, 40, 0.7);
-    border-top: 1px solid var(--antique-gold);
+/* ===== Auth Styles ===== */
+.auth-container {
+  background-color: rgba(26, 42, 74, 0.9);
+  border-radius: 10px;
+  padding: 3rem;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+  border: 2px solid var(--antique-gold);
+  max-width: 450px;
+  width: 90%;
+  margin: 2rem auto;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
-  /* ===== Auth Styles ===== */
-  .auth-container {
-    background-color: rgba(26, 42, 74, 0.9);
-    border-radius: 10px;
-    padding: 3rem;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
-    border: 2px solid var(--antique-gold);
-    max-width: 450px;
-    width: 90%;
-    margin: 2rem auto;
-    position: relative;
-    overflow: hidden;
+.auth-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://ik.imagekit.io/your_account/pics/magic-sparkles.png') center/cover;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.auth-container h1 {
+  color: var(--pale-gold);
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: clamp(1.6rem, 4vw, 2.5rem);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 1rem;
+  color: var(--dusty-blue);
+  pointer-events: none;
+}
+
+.auth-input {
+  width: 100%;
+  padding: 1rem 1rem 1rem 2.8rem;
+  border: 1px solid var(--antique-gold);
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: var(--ink);
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.auth-input:focus {
+  outline: none;
+  border-color: var(--dusty-blue);
+  box-shadow: 0 0 10px rgba(192, 160, 98, 0.5);
+}
+
+.auth-button {
+  background: linear-gradient(to right, var(--navy-blue), var(--dusty-blue));
+  color: var(--pale-gold);
+  border: 1px solid var(--antique-gold);
+  padding: 1rem;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-top: 1rem;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.auth-button:hover {
+  background: linear-gradient(to right, var(--dusty-blue), var(--navy-blue));
+  color: var(--ivory);
+  box-shadow: 0 0 15px var(--glow);
+}
+
+.toggle-text {
+  color: var(--vintage-paper);
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 1rem;
+}
+
+.toggle-link {
+  color: var(--pale-gold);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.toggle-link:hover {
+  color: var(--ivory);
+  text-decoration: underline;
+}
+
+/* ===== Sorting Hat Quiz ===== */
+.sortinghat-card {
+  max-width: 700px;
+  margin: 3rem auto;
+  padding: 3rem;
+  background: linear-gradient(145deg, rgba(26, 42, 74, 0.9), rgba(58, 80, 107, 0.8));
+  border-radius: 10px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+  border: 2px solid var(--antique-gold);
+  position: relative;
+  box-sizing: border-box;
+  width: 90%;
+}
+
+.sortinghat-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://ik.imagekit.io/your_account/pics/sorting-hat-bg.png') center/cover;
+  opacity: 0.1;
+  pointer-events: none;
+  border-radius: 10px;
+}
+
+.sortinghat-card h2 {
+  color: var(--pale-gold);
+  text-align: center;
+  font-size: clamp(1.4rem, 3.5vw, 2rem);
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.sortinghat-card h2::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 2px;
+  background: var(--antique-gold);
+}
+
+#question-number {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: var(--pale-gold);
+  font-size: 1.2rem;
+}
+
+.sortinghat-question {
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  margin-bottom: 2rem;
+  color: var(--vintage-paper);
+  text-align: center;
+  line-height: 1.6;
+}
+
+.sortinghat-options {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 0;
+  gap: 1rem;
+}
+
+.sortinghat-option {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-left: 4px solid transparent;
+}
+
+.sortinghat-option:hover {
+  background-color: rgba(192, 160, 98, 0.2);
+  border-left: 4px solid var(--antique-gold);
+}
+
+.sortinghat-option input[type="radio"] {
+  margin-right: 1rem;
+  width: 20px;
+  height: 20px;
+  accent-color: var(--antique-gold);
+  flex-shrink: 0;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+
+.sortinghat-button {
+  padding: 0.8rem 1.5rem;
+  background: linear-gradient(to right, var(--navy-blue), var(--dusty-blue));
+  color: var(--pale-gold);
+  border: 1px solid var(--antique-gold);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  font-size: 1rem;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.sortinghat-button:hover {
+  background: linear-gradient(to right, var(--dusty-blue), var(--navy-blue));
+  color: var(--ivory);
+  box-shadow: 0 0 15px var(--glow);
+}
+
+.sortinghat-button:disabled {
+  background: var(--gutter);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ===== Result Display ===== */
+.sortinghat-result {
+  text-align: center;
+  padding: 2rem;
+}
+
+.sortinghat-result h3 {
+  font-size: 2rem;
+  color: var(--pale-gold);
+  margin-bottom: 1.5rem;
+}
+
+.house-crest {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 1.5rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.house-description {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: var(--vintage-paper);
+  margin-bottom: 2rem;
+}
+
+/* ===== Animations ===== */
+@keyframes floating {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes glow {
+  0%   { box-shadow: 0 0 10px rgba(192, 160, 98, 0.5); }
+  50%  { box-shadow: 0 0 20px rgba(192, 160, 98, 0.8); }
+  100% { box-shadow: 0 0 10px rgba(192, 160, 98, 0.5); }
+}
+
+.floating {
+  animation: floating 3s ease-in-out infinite;
+}
+
+.glow-anim {
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* ===== Responsive: 768px ===== */
+@media (max-width: 768px) {
+  nav ul li {
+    margin: 0 0.5rem;
   }
-  
-  .auth-container::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('https://ik.imagekit.io/your_account/pics/magic-sparkles.png') center/cover;
-    opacity: 0.1;
-    pointer-events: none;
-  }
-  
-  .auth-container h1 {
-    color: var(--pale-gold);
-    text-align: center;
-    margin-bottom: 2rem;
-    font-size: 2.5rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  }
-  
-  .auth-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-  
-  .auth-input {
-    padding: 1rem;
-    border: 1px solid var(--antique-gold);
-    border-radius: 5px;
+
+  nav ul li a {
     font-size: 1rem;
-    background-color: rgba(255, 255, 255, 0.9);
-    color: var(--ink);
-    transition: all 0.3s ease;
+    padding: 0.5rem;
   }
-  
-  .auth-input:focus {
-    outline: none;
-    border-color: var(--dusty-blue);
-    box-shadow: 0 0 10px rgba(192, 160, 98, 0.5);
+
+  #main-nav ul {
+    gap: 0.5rem;
   }
-  
-  .auth-button {
-    background: linear-gradient(to right, var(--navy-blue), var(--dusty-blue));
-    color: var(--pale-gold);
-    border: 1px solid var(--antique-gold);
-    padding: 1rem;
-    border-radius: 5px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-weight: 600;
-    letter-spacing: 1px;
-    margin-top: 1rem;
-  }
-  
-  .auth-button:hover {
-    background: linear-gradient(to right, var(--dusty-blue), var(--navy-blue));
-    color: var(--ivory);
-    box-shadow: 0 0 15px var(--glow);
-  }
-  
-  .toggle-text {
-    color: var(--vintage-paper);
-    text-align: center;
-    margin-top: 1.5rem;
+
+  #main-nav a {
+    padding: 0.5rem;
     font-size: 1rem;
   }
-  
-  .toggle-link {
-    color: var(--pale-gold);
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s ease;
-  }
-  
-  .toggle-link:hover {
-    color: var(--ivory);
-    text-decoration: underline;
-  }
-  
-  /* ===== Sorting Hat Quiz ===== */
-  .sortinghat-card {
-    max-width: 700px;
-    margin: 3rem auto;
-    padding: 3rem;
-    background: linear-gradient(145deg, rgba(26, 42, 74, 0.9), rgba(58, 80, 107, 0.8));
-    border-radius: 10px;
-    box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
-    border: 2px solid var(--antique-gold);
-    position: relative;
-  }
-  
-  .sortinghat-card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('https://ik.imagekit.io/your_account/pics/sorting-hat-bg.png') center/cover;
-    opacity: 0.1;
-    pointer-events: none;
-  }
-  
-  .sortinghat-h2 {
-    color: var(--pale-gold);
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    position: relative;
-  }
-  
-  .sortinghat-h2::after {
-    content: "";
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 2px;
-    background: var(--antique-gold);
-  }
-  
-  #question-number {
-    text-align: center;
-    font-weight: bold;
-    margin-bottom: 1rem;
-    color: var(--pale-gold);
-    font-size: 1.2rem;
-  }
-  
-  .sortinghat-question {
-    font-size: 1.3rem;
-    margin-bottom: 2rem;
-    color: var(--vintage-paper);
-    text-align: center;
-    line-height: 1.6;
-  }
-  
-  .sortinghat-options {
-    display: flex;
-    flex-direction: column;
-    margin: 2rem 0;
+
+  .characters-container {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    padding: 1rem;
     gap: 1rem;
   }
-  
-  .sortinghat-option {
-    display: flex;
-    align-items: center;
-    padding: 1rem;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border-left: 4px solid transparent;
+
+  .character-card img {
+    height: 200px;
   }
-  
-  .sortinghat-option:hover {
-    background-color: rgba(192, 160, 98, 0.2);
-    border-left: 4px solid var(--antique-gold);
+
+  .gallery img {
+    width: 220px;
+    height: 180px;
   }
-  
-  .sortinghat-option input[type="radio"] {
-    margin-right: 1rem;
-    width: 20px;
-    height: 20px;
-    accent-color: var(--antique-gold);
+
+  .home-page main,
+  .about-section,
+  .sortinghat-card {
+    padding: 1.5rem;
   }
-  
-  .sortinghat-option label {
+
+  .auth-container {
+    padding: 2rem 1.5rem;
+  }
+
+  .home-page p {
     font-size: 1.1rem;
-    color: var(--vintage-paper);
-    cursor: pointer;
-    flex-grow: 1;
   }
-  
-  .button-container {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 2rem;
+
+  .login-button {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
   }
-  
-  .sortinghat-button {
-    padding: 0.8rem 1.5rem;
-    background: linear-gradient(to right, var(--navy-blue), var(--dusty-blue));
-    color: var(--pale-gold);
-    border: 1px solid var(--antique-gold);
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-weight: 600;
-    font-size: 1rem;
+
+  .user-display {
+    position: static;
+    justify-content: center;
+    margin: 0.5rem auto 0;
+    width: fit-content;
   }
-  
-  .sortinghat-button:hover {
-    background: linear-gradient(to right, var(--dusty-blue), var(--navy-blue));
-    color: var(--ivory);
-    box-shadow: 0 0 15px var(--glow);
+}
+
+/* ===== Responsive: 480px ===== */
+@media (max-width: 480px) {
+  header {
+    padding: 1.5rem 1rem;
   }
-  
-  .sortinghat-button:disabled {
-    background: var(--gutter);
-    cursor: not-allowed;
-    transform: none;
-    box-shadow: none;
+
+  nav ul {
+    flex-direction: column;
+    align-items: center;
   }
-  
-  /* ===== Result Display ===== */
-  .sortinghat-result {
+
+  nav ul li {
+    margin: 0.3rem 0;
+  }
+
+  #main-nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  #main-nav li {
+    width: 100%;
     text-align: center;
-    padding: 2rem;
   }
-  
-  .sortinghat-result h3 {
-    font-size: 2rem;
-    color: var(--pale-gold);
-    margin-bottom: 1.5rem;
+
+  #main-nav a {
+    justify-content: center;
+    padding: 0.75rem;
   }
-  
-  .house-crest {
-    width: 150px;
-    height: 150px;
-    margin: 0 auto 1.5rem;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+
+  .characters-container {
+    grid-template-columns: 1fr;
+    padding: 0.75rem;
   }
-  
-  .house-description {
-    font-size: 1.2rem;
-    line-height: 1.8;
-    color: var(--vintage-paper);
-    margin-bottom: 2rem;
+
+  .home-page main {
+    padding: 2rem 1rem;
+    margin: 1.5rem auto;
   }
-  
-  /* ===== Animations ===== */
-  @keyframes floating {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0px); }
+
+  .button-container {
+    flex-direction: column;
   }
-  
-  @keyframes glow {
-    0% { box-shadow: 0 0 10px rgba(192, 160, 98, 0.5); }
-    50% { box-shadow: 0 0 20px rgba(192, 160, 98, 0.8); }
-    100% { box-shadow: 0 0 10px rgba(192, 160, 98, 0.5); }
+
+  .sortinghat-button {
+    width: 100%;
   }
-  
-  .floating {
-    animation: floating 3s ease-in-out infinite;
+
+  .sortinghat-card {
+    margin: 1.5rem auto;
+    padding: 1.5rem 1rem;
   }
-  
-  .glow {
-    animation: glow 2s ease-in-out infinite;
+
+  .back-to-home {
+    position: static;
+    padding: 1rem;
   }
-  
-  /* ===== Responsive Styles ===== */
-  @media (max-width: 768px) {
-    header h1 {
-      font-size: 2rem;
-    }
-    
-    nav ul li {
-      margin: 0 0.5rem;
-    }
-    
-    nav ul li a {
-      font-size: 1rem;
-      padding: 0.5rem;
-    }
-    
-    .characters-container {
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      padding: 1rem;
-      gap: 1rem;
-    }
-    
-    .character-card img {
-      height: 200px;
-    }
-    
-    .gallery img {
-      width: 220px;
-      height: 180px;
-    }
-    
-    .home-page main,
-    .about-section,
-    .sortinghat-card {
-      padding: 1.5rem;
-    }
-    
-    .auth-container {
-      padding: 2rem 1.5rem;
-    }
+
+  .auth-container {
+    padding: 1.5rem 1rem;
+    margin: 1rem auto;
   }
-  
-  @media (max-width: 480px) {
-    header {
-      padding: 1.5rem 1rem;
-    }
-    
-    header h1 {
-      font-size: 1.8rem;
-    }
-    
-    nav ul {
-      flex-direction: column;
-      align-items: center;
-    }
-    
-    nav ul li {
-      margin: 0.3rem 0;
-    }
-    
-    .characters-container {
-      grid-template-columns: 1fr;
-    }
-    
-    .button-container {
-      flex-direction: column;
-      gap: 1rem;
-    }
-    
-    .sortinghat-button {
-      width: 100%;
-    }
-    
-    .user-display {
-      position: static;
-      justify-content: center;
-      margin: 1rem auto;
-      width: fit-content;
-    }
+
+  footer {
+    padding: 1.5rem 1rem;
   }
-  
-  /* ===== Font Import ===== */
-  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;500;700&display=swap');
+}

@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded',function() {
-    const nav = this.getElementById('main-nav');
+    const nav = document.getElementById('main-nav');
     nav.innerHTML = `
     <ul>
         <li><a href="index.html">Home</a></li>
